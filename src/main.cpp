@@ -61,6 +61,16 @@ int main(int argc, char *argv[])
           * NOTE: Feel free to play around with the throttle and speed. Maybe use
           * another PID controller to control the speed!
           */
+          /* SOFT TWIDDLE */
+          if(cte < pid.p_error){
+        	  pid.Kp *= 1.1;
+        	  pid.Kd *= 1.1;
+          }
+          else{
+        	  pid.Kp *= 1.1;
+        	  pid.Kd *= 1.1;
+          }
+
           pid.UpdateError(cte);
           steer_value = pid.TotalError();
 
