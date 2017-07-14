@@ -1,6 +1,14 @@
 # CarND-Controls-PID
 Self-Driving Car Engineer Nanodegree Program
 
+## Reflection
+
+As there is no systematic bias in the car in simulator so I had left Ki as 0 to not get any effect of i_error in total error. I started Ki with -1 but the car was oscillating between the two edges of road, then I reduced and tried for several times until I settled with -0.15. Similarly, for Kd, I started with -1 but found that the differential part should have more weight to be able to avoid oscillations and finally settled with -2. Higher values of Kd made the drive look unnatural.
+
+As said I used manual tuning to find the right parameters of PID controller.
+
+Please run using: ./pid -0.15 0 -2
+
 ---
 
 ## Dependencies
