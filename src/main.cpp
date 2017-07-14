@@ -34,9 +34,9 @@ int main(int argc, char *argv[])
 
   PID pid;
   // TODO: Initialize the pid variable.
-  double init_Kp = atof(argv[1]);
-  double init_Ki = atof(argv[2]);
-  double init_Kd = atof(argv[3]);
+  double init_Kp = atof(argv[1]); //-0.15
+  double init_Ki = atof(argv[2]); //0
+  double init_Kd = atof(argv[3]); //-2
   pid.Init(init_Kp, init_Ki, init_Kd);
 
   h.onMessage([&pid](uWS::WebSocket<uWS::SERVER> ws, char *data, size_t length, uWS::OpCode opCode) {
@@ -63,6 +63,7 @@ int main(int argc, char *argv[])
           */
           pid.UpdateError(cte);
           steer_value = pid.TotalError();
+
           // DEBUG
           std::cout << "CTE: " << cte << " Steering Value: " << steer_value << std::endl;
 
